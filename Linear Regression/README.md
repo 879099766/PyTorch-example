@@ -17,8 +17,6 @@ x -> Linear -> ŷ
 
 * Loss:<br>
 <i>loss</i> = (ŷ - y)^2 => (x * w - y)^2 <br>
-∴ <i>loss</i> => 1/N (var sum = 0
-for (var i = 1; i <= n; i++) {
-  sum += ((ŷn - yn)^2)
-})
+∴ <i>loss</i> => 1/N ∑ (starts n=1 and to N) (ŷ_n - y_n)^2
+
 

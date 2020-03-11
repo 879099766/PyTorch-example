@@ -33,6 +33,7 @@ def loss(x, y):
 for item in range(10):
     for x_val, y_val in zip(x_data, y_data):
         L = loss(x_val, y_val)
+        # backward propagation in order to compute all gradients
         L.backward()
         print("\tgrad: ", x_val, y_val, w.grad.data[0])
 

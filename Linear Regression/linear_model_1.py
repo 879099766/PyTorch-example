@@ -1,3 +1,6 @@
+# linear regression (linear prediction) on # of hours study --> exam result
+# supervised learning
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -7,13 +10,20 @@ w = 1.0 # a random guess: random value
 weight_list = []
 mse_list = []
 
-# model for the forward passing
 def forward(x):
+    """
+    forward passing
+    INPUT: a float val
+    OUTPUT: return (input * random val)
+    """
     return x * w
 
-# loss func
 def loss(x, y):
-    # equation: (x * w - y)^2
+    """
+    compute loss for the model
+    INPUT: two float x and y
+    OUTPUT: return (y_pred - y)^2
+    """
     y_pred = forward(x)
     return (y_pred - y) * (y_pred - y)
 
@@ -27,6 +37,7 @@ for w in np.arange(0.0, 4.1, 0.1):
         loss_sum += L
         print("\t", x_val, y_val, y_pred_val, L)
 
+    # equation: 1/N ∑ (starts n=1 and to N) (ŷ_n - y_n)^2
     print("MSE = ", loss_sum / 3)
     weight_list.append(w)
     mse_list.append(loss_sum / 3)

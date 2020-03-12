@@ -1,12 +1,16 @@
-# autograd from PyTorch
-
+"""
+autograd from PyTorch
+Steps:
+    1. forward pass
+    2. compute the gradients of the loss using backward pass
+"""
 import torch
 
 # training data
 x_data = [1.0, 2.0, 3.0]
 y_data = [2.0, 4.0, 6.0]
 
-# random val
+# random val. aka gradient
 # Note: "w = Variable(torch.Tensor([1.0]),  requires_grad=True)" on the tutorial is deprecated
 # below method is encouraged
 w = torch.tensor([1.0], requires_grad=True)
@@ -32,8 +36,10 @@ def loss(x, y):
 # training model
 for item in range(10):
     for x_val, y_val in zip(x_data, y_data):
+        # forward propagation
         L = loss(x_val, y_val)
-        # backward propagation in order to compute all gradients
+
+        # backward propagation in order to compute gradient loss respect with all vars inside the graph
         L.backward()
         print("\tgrad: ", x_val, y_val, w.grad.data[0])
 

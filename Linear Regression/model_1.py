@@ -32,8 +32,13 @@ for w in np.arange(0.0, 4.1, 0.1):
     loss_sum = 0
 
     for x_val, y_val in zip(x_data, y_data):
+        # forward propagation
         y_pred_val = forward(x_val)
+
+        # backward propagation
         L = loss(x_val, y_val)
+
+        # sum the loss and then output it
         loss_sum += L
         print("\t", x_val, y_val, y_pred_val, L)
 
